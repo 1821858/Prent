@@ -1,2 +1,3 @@
 Prent contains all the code
-Sample input is called 
+
+Sample input is called dara.jpeg
