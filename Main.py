@@ -6,6 +6,7 @@ import Effects
 import os
 import cProfile
 from ArgParse import *
+import cProfile
 
 def render(args):
     if args.help_effects or args.input_file is None or args.effect_name is None:
@@ -90,11 +91,11 @@ def render(args):
         out.release()
         print(f"\nVideo processing complete. Output saved as '{output_path}'.")
 
+# Main
+# Calls the argument parser then calls the render helper method
 def main():
     args = create_parser().parse_args()
-
-
-    render(args)
+    cProfile.runctx("render(args)", globals(), locals(), 'profiler_output')
 
 # Only execute if it is executed directly, not as a module in another script
 if __name__ == "__main__":
