@@ -9,6 +9,7 @@ from ArgParse import *
 import cProfile
 
 def render(args):
+    # Incorrect input handling
     if args.help_effects or args.input_file is None or args.effect_name is None:
         parser.print_help()
         return
