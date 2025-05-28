@@ -20,13 +20,22 @@ y = int((screen_height - dynamic_height) / 2)
 # Set window size dynamically based on screen dimensions
 root.geometry(f"{dynamic_width}x{dynamic_height}+{x}+{y}")
 
+frm = Frame(root)
+frm.pack(fill = BOTH, expand=True)
+
+# Font settings
+header_font = ("Helvetica", 50, "bold")
+subheader_font = ("Helvetica", 30)
 
 
-frm = Frame(root, highlightbackground="black", highlightthickness=2)
-frm.pack(padx=10, pady=10, fill=BOTH, expand=True)
-ttk.Label(frm, text="Welcome to Prent!").pack()
-ttk.Label(frm, text="To get started, please upload an image or video file.").pack()
-ttk.Button(frm, text="Browse Files").pack()
-ttk.Button(frm, text="Help").pack()
-ttk.Button(frm, text="About").pack()
+ttk.Label(frm, text="Welcome to Prent!", font = header_font).pack(pady = [35,0])
+ttk.Label(frm, text="To get started, please upload an image or video file.", font = subheader_font).pack(pady = 10)
+ttk.Button(frm, text="Browse Files", style = "Home.TButton").pack(pady = [100, 20], ipadx = 10, ipady = 10)
+ttk.Button(frm, text="Help", style = "Home.TButton").pack(pady = 20, ipadx = 10, ipady = 10)
+ttk.Button(frm, text="About", style = "Home.TButton").pack(pady = 20, ipadx = 10, ipady = 10)
+
+# Button settings
+style = ttk.Style()
+style.configure("Home.TButton", font=subheader_font)
+
 root.mainloop()
