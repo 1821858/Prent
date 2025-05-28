@@ -6,9 +6,21 @@ def polygonize_effect(frame, args):
     """
     Applies a polygonal effect to the frame.
     """
+    # reduced_frame = Filters.reduce_colors(frame, args.num_colors) 
     reduced_frame = Filters.reduce_colors(frame, args.num_colors)
     polygon_frame = Filters.polygonize(reduced_frame, args.num_polygons)
     return polygon_frame
+
+def red_view(frame, args):
+    """
+    """
+
+    reduced_frame = Filters.red_view(frame, args.num_colors)
+    polygon_frame = Filters.polygonize(reduced_frame, args.num_polygons)
+    return polygon_frame
+
+def color_reduction(frame, args):
+    return Filters.reduce_colors(frame, args.num_colors)
 
 def cartoon_effect(frame, args):
     """
@@ -61,11 +73,19 @@ def sketch_effect(frame, args):
     sketch_image = cv2.cvtColor(sketch_image, cv2.COLOR_GRAY2BGR)
     return sketch_image
 
+#def prototype_effect(frame, args):
+#    int i = 0
+#    if skip:
+
+
 # Define the effects dictionary at module level
 effects = {
     'polygonize': polygonize_effect,
     'cartoon': cartoon_effect,
     'sketch': sketch_effect,
+    'reduce': color_reduction,
+    'red_view': red_view,
+
     # Add more effects here
 }
 
@@ -74,3 +94,4 @@ def get_effect_function(effect_name):
 
 def get_available_effects():
     return list(effects.keys())
+

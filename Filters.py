@@ -1,10 +1,12 @@
 import cv2
 import numpy as np
+import h2o
+from h2o.estimators.kmeans import H2OKMeansEstimator
 
-def reduce_colors(image, num_colors):
-    """
-    Reduces the number of colors in an image using K-means clustering.
-    """
+def reduce_colors_cv(image, num_colors):
+    
+    #Reduces the number of colors in an image using K-means clustering.
+    
     # Reshape the image to a 2D array of pixels
     pixel_values = image.reshape((-1, 3))
     pixel_values = np.float32(pixel_values)
@@ -22,6 +24,30 @@ def reduce_colors(image, num_colors):
     reduced_image = reduced_image.reshape(image.shape)
 
     return reduced_image
+
+
+def reduce_colors(image, num_colors):
+    
+    # Approximate color quantization to 'num_colors' total colors.
+    
+    # Estimate levels per channel assuming uniform grid in RGB space
+    levels = int(round(num_colors ** (1/3)))  # Cube root since RGB = 3 channels
+    levels = max(1, min(levels, 256))         # Clamp to valid range
+
+    factor = 256 // levels
+    quantized = (image // factor * factor).astype(np.uint8)
+    return quantized
+
+def red_view(image, num_colors):
+    levels = int(round(num_colors ** (1/3)))
+    if (levels > 256):
+        levels = 256
+    if (levels < 1):
+        levels = 1
+
+    factor = 255 // levels
+    quantized = (image // factor * factor).astype(np.uint8)
+    return quantized
 
 def polygonize(image, num_polygons):
     """
