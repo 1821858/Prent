@@ -30,7 +30,7 @@ def show_home():
 def show_help():
     for widget in frame.winfo_children():
         widget.destroy()
-    help_frame = create_help_page(frame)
+    help_frame = create_help_page(frame, show_home)
     help_frame.pack(fill=BOTH, expand=True)
 
 
