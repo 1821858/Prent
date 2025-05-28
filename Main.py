@@ -7,7 +7,6 @@ import os
 import cProfile
 from ArgParse import *
 import cProfile
-import h2o
 
 def render(args):
     # Incorrect input handling
