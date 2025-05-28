@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from Home import create_home_page
 from Help import create_help_page
+from About import create_about_page
 
 # Create main window
 root = Tk()
@@ -24,7 +25,7 @@ frame.pack(fill = BOTH, expand=True)
 def show_home():
     for widget in frame.winfo_children():
         widget.destroy()
-    home_frame = create_home_page(frame, show_help)
+    home_frame = create_home_page(frame, show_help, show_about)
     home_frame.pack(fill=BOTH, expand=True)
 
 def show_help():
@@ -32,6 +33,12 @@ def show_help():
         widget.destroy()
     help_frame = create_help_page(frame, show_home)
     help_frame.pack(fill=BOTH, expand=True)
+
+def show_about():
+    for widget in frame.winfo_children():
+        widget.destroy()
+    about_frame = create_about_page(frame, show_home)
+    about_frame.pack(fill=BOTH, expand=True)
 
 
 show_home()

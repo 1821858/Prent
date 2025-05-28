@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-def create_help_page(parent, show_home_callback):
+def create_about_page(parent, show_home_callback):
     main_frame = Frame(parent)
     # Font settings
     header_font = ("Helvetica", 50, "bold")

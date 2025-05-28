@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-def create_home_page(parent, show_help_callback):
+def create_home_page(parent, show_help_callback, show_about_callback):
     # Create a frame attached to parent
     frame = Frame(parent)
 
@@ -22,7 +22,7 @@ def create_home_page(parent, show_help_callback):
 
     ttk.Button(frame, text="Browse Files", style="Home.TButton").pack(pady=[20, 20], ipadx=10, ipady=10)
     ttk.Button(frame, text="Help", style="Home.TButton", command=show_help_callback).pack(pady=20, ipadx=10, ipady=10)
-    ttk.Button(frame, text="About", style="Home.TButton").pack(pady=20, ipadx=10, ipady=10)
+    ttk.Button(frame, text="About", style="Home.TButton", command=show_about_callback).pack(pady=20, ipadx=10, ipady=10)
 
     # example function to show errors (not called yet)
     def show_errors():
