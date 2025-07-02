@@ -40,7 +40,6 @@ def show_about():
     about_frame = create_about_page(frame, show_home)
     about_frame.pack(fill=BOTH, expand=True)
 
-
 show_home()
 
 root.mainloop()
