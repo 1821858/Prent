@@ -13,8 +13,8 @@ screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
 # Dynamic window sizing and centering
-dynamic_width = int(screen_width * 0.75)
-dynamic_height = int(screen_height * 0.75)
+dynamic_width = int(screen_width * 0.85)
+dynamic_height = int(screen_height * 0.85)
 x = int((screen_width - dynamic_width) / 2)
 y = int((screen_height - dynamic_height) / 2)
 root.geometry(f"{dynamic_width}x{dynamic_height}+{x}+{y}")
